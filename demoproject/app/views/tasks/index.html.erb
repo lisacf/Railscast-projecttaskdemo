@@ -6,25 +6,15 @@
 <% end %>
 <br>
 <hr />
-<table>
-<theader><strong>Rails Cast 29 group_by_month</strong></theader>
-<tbody>
-	<tr><th>Task</th><th>Due On</th></tr>
+<h2>Rails Cast 29 group_by_month</h2>
 <% @task_months.keys.sort.each do |month| %>
 <h2><%= month.strftime('%B %Y') %></h2>
 	<% for task in @task_months[month] %>
-	<tr>
-	<td>
-
-		<strong><%= task.name %></strong>
-	</td>
-	<td>
-		due on <%= task.due_at.to_date.to_s(:long) %>
-	</td>
-	</tr>
+		<p><strong><%= task.name %></strong>
+		: due on <%= task.due_at.to_date.to_s(:long) %>
+	</p>
 	<% end %>
 <% end %>
-</table>
 <br>
 <hr />
 
