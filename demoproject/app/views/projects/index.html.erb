@@ -1,0 +1,11 @@
+<h2>Projects</h2>
+<table>
+	<% for project in @projects %>
+	<tr>
+		<td><%= link_to project.name, project_path(project) %></td>
+		<td>
+			<small>(<%= pluralize project.tasks.size, 'task' %>)</small>
+		</td>
+	</tr>
+	<% end %>
+</table>

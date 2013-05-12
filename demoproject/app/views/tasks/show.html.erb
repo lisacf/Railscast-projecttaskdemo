@@ -1,0 +1,13 @@
+<h1>Task</h1>
+<h2><%= @task.name %></h2>
+<p>
+	Project: <%= link_to @task.project.name, project_path(@task.project.id)%>
+</p>
+<h2>Comments</h2>
+<% for comment in @task.comments %>
+	<p><%= comment.content %></p>
+	<hr />
+<% end %>
+
+<h3>Add Comment:</h3>
+

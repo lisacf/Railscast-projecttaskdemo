@@ -1,0 +1,41 @@
+<% title "Tasks" %>
+<h2>Search Tasks</h2>
+<%= form_tag tasks_path, :method => 'get' do %>
+	<%= text_field_tag :query, params[:query] %>
+	<%= submit_tag "Search", :name => nil %>
+<% end %>
+<br>
+<hr />
+<table>
+<theader><strong>Rails Cast 29 group_by_month</strong></theader>
+<tbody>
+	<tr><th>Task</th><th>Due On</th></tr>
+<% @task_months.keys.sort.each do |month| %>
+<h2><%= month.strftime('%B %Y') %></h2>
+	<% for task in @task_months[month] %>
+	<tr>
+	<td>
+
+		<strong><%= task.name %></strong>
+	</td>
+	<td>
+		due on <%= task.due_at.to_date.to_s(:long) %>
+	</td>
+	</tr>
+	<% end %>
+<% end %>
+</table>
+<br>
+<hr />
+
+<table>
+	<theader><strong>Rails Cast 28 in_groups_of(4) method</strong></theader>
+	<!-- RAILSCAST 28 IN GROUPS OF method  -->
+<% @tasks.in_groups_of(4, false) do |row_tasks| %>
+	<tr>
+		<% for task in row_tasks %>
+			<td><%= task.name %></td>
+		<% end %>
+	</tr>
+<% end %>
+</table>
