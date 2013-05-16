@@ -10,8 +10,9 @@
 <% @task_months.keys.sort.each do |month| %>
 <h2><%= month.strftime('%B %Y') %></h2>
 	<% for task in @task_months[month] %>
-		<p><strong><%= task.name %></strong>
-		: due on <%= task.due_at.to_date.to_s(:long) %>
+		<p><strong><%= link_to task.name, task_url(task.id) %></strong>
+		<%= task.due_at.to_s(:due_time) %>
+		<%= link_to "edit", edit_task_url(task.id) %>
 	</p>
 	<% end %>
 <% end %>
@@ -29,3 +30,4 @@
 	</tr>
 <% end %>
 </table>
+<p><%= link_to 'New Task', new_task_path %></p>

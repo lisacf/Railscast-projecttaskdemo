@@ -1,9 +1,17 @@
 <%= form_for @task do |f| %>
+<div class="field">
 <%= f.label :name %>
 <%= f.text_field :name %><br>
-<%= f.label :due_at, "Date Due: " %>
-<%= f.datetime_select :due_at %><br>
+<%= f.label :due_at_string, "Date Due: " %>
+<%= f.text_field :due_at_string %><br>
 <%= f.label :project_id, "Project" %>
 <%= f.collection_select :project_id, Project.all, :id, :name %><br>
+</div>
+
+<%= f.fields_for :comments do |builder| %>
+	<%= render 'comment_fields', f: builder %>
+<% end %>
+<div class="actions">
 <%= f.submit %>
+</div>
 <% end %>

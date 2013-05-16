@@ -1,6 +1,10 @@
 Demoproject::Application.routes.draw do
   resources :projects
+  resources :tasks do 
+    get :archive , :on => :collection
+  end
   resources :tasks
+  match 'tasks/archive/:year/:month', :to => 'tasks#archive'
 
   root :to => "projects#index"
   # The priority is based upon order of creation:

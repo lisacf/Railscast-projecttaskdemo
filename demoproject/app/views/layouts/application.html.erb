@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Demoproject - <%= yield(:title) || "Projects and Tasks" %></title>
+  <title>Demoproject - <%= yield(:title).blank? ? "Projects and Tasks" : yield(:title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>

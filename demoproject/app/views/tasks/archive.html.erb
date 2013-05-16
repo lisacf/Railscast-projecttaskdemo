@@ -1,0 +1,8 @@
+<ul>
+<% @tasks.each do |task| %>
+<li>
+<%= task.name %> <%= task.due_at.to_s(:due_time) %>
+</li>
+<% end %>
+</ul>
+<%= archive_tasks_path(:year=>2010, :month=>5) %>

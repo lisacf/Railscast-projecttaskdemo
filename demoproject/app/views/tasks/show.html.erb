@@ -1,13 +1,23 @@
 <h1>Task</h1>
 <h2><%= @task.name %></h2>
 <p>
-	Project: <%= link_to @task.project.name, project_path(@task.project.id)%>
+	Project: <%= link_to @task.project.name, project_path(@task.project.id)%><br>
+	due on: <%= @task.due_at %>
 </p>
 <h2>Comments</h2>
-<% for comment in @task.comments %>
-	<p><%= comment.content %></p>
-	<hr />
+<ol class="comments">
+<% @task.comments.each do |comment| %>
+  <li>
+    <%= comment.content %>
+  </li>
 <% end %>
+</ol>
 
 <h3>Add Comment:</h3>
+
+
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back to Tasks', tasks_path %>
 
